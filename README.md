@@ -1,16 +1,51 @@
-# React + Vite
+# TaskFlow UI — Frontend Web Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The responsive web interface for TaskFlow, built with React 18, Vite, and Tailwind CSS. Provides task management with live weather contextualization, Cloudinary file uploads, and session persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎨 Features & Highlights
 
-## React Compiler
+* **Authentication & Protected Routes:** Centralized JWT session handling via React Context API and route guards.
+* **Interactive Task Management:** Full CRUD task creation with multipart file uploads and dynamic status toggles (`PENDING` / `DONE`).
+* **Live Weather Badging:** Real-time city temperature and condition tags integrated into task cards via backend weather snapshots.
+* **Smart Search & Filters:** Debounced text queries and instant dropdown filtering by priority (`HIGH`, `MEDIUM`, `LOW`) and status.
+* **Cloudinary Attachment Viewer:** Direct preview and download access for documents and image attachments.
+* **Axios Interceptors:** Automatic Bearer token header injection on every outgoing request with graceful `401 Unauthorized` session cleanup.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Core:** React 18, Vite
+* **Styling:** Tailwind CSS, PostCSS, Autoprefixer
+* **Routing:** React Router DOM (v6)
+* **HTTP Client:** Axios
+* **Icons:** Lucide React
+
+---
+
+## 📁 Project Structure
+
+```text
+frontend/
+├── public/                 # Static public assets
+├── src/
+│   ├── components/         # Reusable UI elements
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── TaskCard.jsx
+│   │   └── TaskFormModal.jsx
+│   ├── context/            # AuthContext & state providers
+│   │   └── AuthContext.jsx
+│   ├── pages/              # Primary route views
+│   │   ├── DashboardPage.jsx
+│   │   ├── LoginPage.jsx
+│   │   └── RegisterPage.jsx
+│   ├── services/           # Axios instance & interceptors
+│   │   └── api.js
+│   ├── App.jsx             # Top-level routing layout
+│   ├── index.css           # Tailwind directives & base styles
+│   └── main.jsx            # React root mount
+├── .env.example            # Environment variables template
+├── tailwind.config.js      # Tailwind design system configuration
+└── vite.config.js          # Vite build settings
